@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aaliya Alam · robotics</title>
+<meta name="description" content="Aaliya Alam: robotics engineer, MS Robotics at the University of Michigan. Perception, autonomous systems, intelligent machines.">
+<meta property="og:title" content="Aaliya Alam · robotics">
+<meta property="og:description" content="Building things that see, move & think.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' fill='%2373A9CB'/%3E%3Crect x='3' y='3' width='10' height='7' fill='%23EDF5F8'/%3E%3Crect x='5' y='5' width='2' height='2' fill='%23263C4B'/%3E%3Crect x='9' y='5' width='2' height='2' fill='%23263C4B'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Caveat:wght@500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#EDF5F8; --ink:#263C4B; --soft:#5d7585; --sky:#73A9CB; --mint:#C8E6DC; --lav:#DCD8EF; --paper:#FAFBFA;
+  --line:rgba(38,60,75,.22); --glass:rgba(250,251,250,.72);
+  --mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+}
+*{box-sizing:border-box}
+html,body{height:100%;margin:0}
+body{font:400 13px/1.65 var(--mono);color:var(--ink);overflow:hidden;
+  background:
+   radial-gradient(ellipse 38% 16% at 22% 20%,rgba(255,255,255,.85),transparent 70%),
+   radial-gradient(ellipse 30% 12% at 72% 12%,rgba(255,255,255,.75),transparent 70%),
+   radial-gradient(ellipse 45% 18% at 80% 62%,rgba(255,255,255,.6),transparent 70%),
+   linear-gradient(180deg,#cfe3ee 0%,var(--bg) 55%,#f3f8f9 100%);}
+a{color:var(--ink);text-underline-offset:3px;text-decoration-color:var(--sky)}
+a:hover{background:var(--mint)}
+:focus-visible{outline:2px solid var(--sky);outline-offset:2px}
+button{font:inherit;color:inherit;cursor:pointer}
+h1,h2,h3,p,ul{margin:0}
+.bar{position:fixed;inset:0 0 auto 0;height:30px;display:flex;align-items:center;gap:18px;padding:0 14px;background:var(--glass);backdrop-filter:blur(6px);border-bottom:1px solid var(--line);z-index:5000;color:var(--soft)}
+.bar b{color:var(--ink);font-weight:500}
+.bar button{background:none;border:0;padding:0;color:var(--soft)}
+.bar button:hover{color:var(--ink)}
+.bar .clock{margin-left:auto}
+.desk{position:fixed;inset:30px 0 34px 0}
+.icons{position:absolute;left:16px;top:16px;display:grid;gap:14px}
+.icon{width:84px;background:none;border:1px solid transparent;padding:6px 2px;text-align:center;color:var(--ink)}
+.icon:hover,.icon:focus-visible{background:rgba(255,255,255,.5);border-color:var(--line)}
+.icon svg{display:block;margin:0 auto 4px;image-rendering:pixelated}
+.icon span{font-size:11px;display:block}
+.win{position:absolute;background:var(--paper);border:1px solid var(--ink);box-shadow:3px 3px 0 rgba(38,60,75,.14);display:flex;flex-direction:column;max-height:calc(100% - 20px)}
+.win[hidden]{display:none}
+.win.open{animation:pop .16s ease-out}
+@keyframes pop{from{transform:scale(.97);opacity:0}}
+.title{display:flex;align-items:center;gap:8px;padding:4px 6px 4px 10px;background:linear-gradient(180deg,#fff,#dfeaf0);border-bottom:1px solid var(--line);cursor:grab;user-select:none;touch-action:none;color:var(--soft);font-size:12px}
+.title span{flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.title button{width:20px;height:20px;line-height:16px;padding:0;background:var(--paper);border:1px solid var(--line)}
+.title button:hover{background:var(--lav)}
+.body{padding:16px 18px;overflow:auto}
+.win.min .body{display:none}
+.main{left:130px;top:34px;width:min(560px,calc(100% - 160px))}
+h1{font-weight:500;font-size:24px;line-height:1.25;letter-spacing:-.02em;margin-bottom:12px}
+.lede{color:var(--soft);max-width:60ch;margin-bottom:16px}
+.row{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:12px}
+.btn{display:inline-block;padding:5px 12px;border:1px solid var(--ink);background:var(--mint);text-decoration:none;box-shadow:2px 2px 0 rgba(38,60,75,.18)}
+.btn:hover{background:var(--lav)} .btn.alt{background:var(--paper)}
+.links{color:var(--soft);font-size:12px}
+.widget{position:absolute;width:210px}
+.status{right:28px;top:40px}
+.status dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:2px 10px;font-size:12px}
+.status dt{color:var(--soft)} .status dd{margin:0}
+.dot{display:inline-block;width:7px;height:7px;background:#8fc9b3;border:1px solid var(--ink);margin-right:6px}
+.player{right:60px;top:190px}
+.player .screen{background:#dbe9ee;border:1px solid var(--line);padding:6px 8px;font-size:12px;margin-bottom:8px;overflow:hidden;white-space:nowrap}
+.player .screen i{display:inline-block;font-style:normal;animation:scroll 12s linear infinite}
+@keyframes scroll{from{transform:translateX(100%)}to{transform:translateX(-100%)}}
+.ctrl{display:flex;gap:6px;justify-content:center;color:var(--soft)}
+.ctrl span{border:1px solid var(--line);padding:0 8px}
+.note{position:absolute;right:300px;bottom:44px;width:170px;background:#e8e4f6;padding:14px;font:500 22px/1.15 "Caveat",cursive;transform:rotate(-3deg);box-shadow:2px 3px 0 rgba(38,60,75,.14);border:0}
+.note:before{content:"";position:absolute;top:-8px;left:50%;width:50px;height:14px;margin-left:-25px;background:rgba(200,230,220,.8);transform:rotate(2deg)}
+.proj{width:min(660px,calc(100% - 40px));left:200px;top:40px}
+.proj .body{display:grid;gap:22px}
+.p{display:grid;grid-template-columns:150px 1fr;gap:16px}
+.p:nth-child(even){grid-template-columns:1fr 150px}
+.p:nth-child(even) .thumb{order:2}
+.thumb{aspect-ratio:1;border:1px solid var(--line);position:relative;overflow:hidden;background:var(--bg)}
+.thumb svg{width:100%;height:100%;display:block;transition:transform .4s}
+.p:hover .thumb svg{transform:scale(1.05)}
+.p h3{font-weight:500;font-size:14px;margin-bottom:2px}
+.meta{color:var(--soft);font-size:12px;margin-bottom:6px}
+.tag{display:inline-block;border:1px solid var(--line);padding:0 6px;margin:6px 4px 0 0;font-size:11px;background:#fff}
+.state{background:var(--mint);padding:0 6px;font-size:11px;border:1px solid var(--line)}
+.state.on{background:var(--lav)}
+.small{width:min(440px,calc(100% - 40px))}
+.about{left:260px;top:70px} .now{left:340px;top:110px} .contact{left:300px;top:90px}
+.tl{list-style:none;padding:0;margin-top:12px;border-left:1px solid var(--sky)}
+.tl li{padding:0 0 10px 14px;position:relative}
+.tl li:before{content:"";position:absolute;left:-4px;top:8px;width:7px;height:7px;background:var(--paper);border:1px solid var(--ink)}
+.tl small{color:var(--soft);display:block}
+.body p+p,.body p+.tl{margin-top:10px}
+.tick{list-style:none;padding:0}.tick li:before{content:"- ";color:var(--sky)}
+.bottom{position:fixed;inset:auto 0 0 0;height:34px;display:flex;align-items:center;gap:14px;padding:0 14px;background:var(--glass);backdrop-filter:blur(6px);border-top:1px solid var(--line);color:var(--soft);font-size:12px;z-index:5000;white-space:nowrap;overflow:hidden}
+.bottom a{color:var(--soft)}
+.dock{display:flex;gap:6px}.dock button{border:1px solid var(--line);background:var(--paper);padding:0 8px;font-size:11px}
+@media(max-width:760px){
+  body{overflow:auto}
+  .desk{position:static;padding:40px 12px 50px;display:grid;gap:12px}
+  .icons{position:static;grid-auto-flow:column;grid-auto-columns:1fr}
+  .icon{width:auto}
+  .win,.widget{position:static;width:auto!important;margin:0}
+  .win.pop{position:fixed;inset:40px 10px 44px 10px!important;z-index:6000;max-height:none}
+  .note{position:relative;right:auto;bottom:auto;justify-self:start}
+  .bar span.hide,.bottom .hide{display:none}
+  .p,.p:nth-child(even){grid-template-columns:1fr}.p:nth-child(even) .thumb{order:0}.thumb{aspect-ratio:2/1}
+  .player{display:none}
+}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div class="bar"><b>aaliya_alam</b><span class="hide">robotics / umich</span>
+  <button data-open="proj">projects</button><button data-open="about">about</button><button data-open="now">now</button><button data-open="contact">contact</button>
+  <span class="clock" id="clock"></span></div>
+
+<main class="desk" id="desk">
+  <nav class="icons" aria-label="Desktop">
+    <button class="icon" data-open="proj"><svg width="36" height="30" viewBox="0 0 12 10"><path d="M0 1h5l1 1h6v8H0z" fill="#73A9CB"/><path d="M0 3h12v7H0z" fill="#9cc6de"/><path d="M0 3h12" stroke="#fff" stroke-width=".4"/></svg><span>projects</span></button>
+    <button class="icon" data-open="about"><svg width="30" height="34" viewBox="0 0 10 12"><path d="M0 0h7l3 3v9H0z" fill="#FAFBFA" stroke="#263C4B" stroke-width=".6"/><path d="M2 5h6M2 7h6M2 9h4" stroke="#73A9CB" stroke-width=".6"/></svg><span>about_me.txt</span></button>
+    <button class="icon" data-open="now"><svg width="34" height="30" viewBox="0 0 12 10"><rect width="12" height="10" fill="#DCD8EF" stroke="#263C4B" stroke-width=".6"/><rect width="12" height="2" fill="#73A9CB"/><path d="M3 5l2 1.5L3 8" stroke="#263C4B" stroke-width=".6" fill="none"/></svg><span>now_learning.exe</span></button>
+    <button class="icon" data-open="contact"><svg width="34" height="26" viewBox="0 0 12 9"><rect width="12" height="9" fill="#FAFBFA" stroke="#263C4B" stroke-width=".6"/><path d="M0 0l6 5 6-5" stroke="#73A9CB" stroke-width=".6" fill="none"/></svg><span>mail</span></button>
+  </nav>
+
+  <section class="win main" aria-labelledby="hi">
+    <div class="title"><span>/hello.txt</span><button class="min" aria-label="Minimize">_</button></div>
+    <div class="body">
+      <h1 id="hi">Building things that see, move &amp; think.</h1>
+      <p class="lede" id="intro"></p>
+      <div class="row"><button class="btn" data-open="proj">Explore my work</button><button class="btn alt" data-open="contact">Get in touch</button></div>
+      <p class="links" id="links"></p>
+    </div>
+  </section>
+
+  <aside class="win widget status"><div class="title"><span>system_status</span><button class="min" aria-label="Minimize">_</button></div>
+    <div class="body"><dl id="status"></dl></div></aside>
+
+  <aside class="win widget player"><div class="title"><span>now_playing</span><button class="min" aria-label="Minimize">_</button></div>
+    <div class="body"><div class="screen"><i id="inhead"></i></div><div class="ctrl" aria-hidden="true"><span>|&lt;</span><span>&gt;</span><span>&gt;|</span></div></div></aside>
+
+  <div class="note" id="note" role="note"></div>
+
+  <section class="win proj pop" id="proj" hidden aria-label="Projects"></section>
+  <section class="win small about pop" id="about" hidden aria-label="About"></section>
+  <section class="win small now pop" id="now" hidden aria-label="Currently exploring"></section>
+  <section class="win small contact pop" id="contact" hidden aria-label="Contact"></section>
+</main>
+
+<footer class="bottom">
+  <span>made with curiosity, questionable amounts of coffee, and a little bit of code.</span>
+  <span class="hide">Ann Arbor, Michigan</span>
+  <span class="dock" id="dock"></span>
+</footer>
+
+<script>
+/* ============ EDIT YOUR CONTENT HERE ============ */
+const SITE = {
+  intro: "I'm a robotics engineer interested in perception, autonomous systems, and intelligent machines. I like working where software, hardware, and the real world meet.",
+  github: "https://github.com/scaa1810",   // check this is your username
+  linkedin: "",                             // paste your LinkedIn URL
+  email: "",                                // paste your email
+  resume: "",                               // e.g. "resume.pdf" (put the file next to index.html)
+  status: [["currently","building things"],["location","Ann Arbor, MI"],["focus","robotics & perception"]],
+  inHead: "edit me: whatever is stuck in your head this week",
+  note: "make something interesting today.",
+  about: [
+    "I'm doing an MS in Robotics at the University of Michigan. Before that I did a B.Tech in Computer Science and Engineering (AI & Robotics) at VIT Chennai.",
+    "I like robots that have to deal with messy, real input: robot perception, computer vision, autonomous systems, motion planning, deep learning, reinforcement learning, and mapping."
+  ],
+  timeline: [
+    ["2024 – now","MS Robotics, University of Michigan"],
+    ["Aug 2024 – now","President, Autonomous Underwater Vehicles Club, VIT Chennai"],
+    ["2024","2nd place, TAU Autonomy Centre Competition, Norway"],
+    ["Sep 2023 – Feb 2024","Programming Lead (Junior Board), Dreadnought Robotics"],
+    ["– 2024","B.Tech CSE (AI & Robotics), VIT Chennai"]
+  ],
+  now: [
+    "robot perception",
+    "mapping and spatial understanding",
+    "intelligent autonomous systems",
+    "learning-based robotics",
+    "computer vision"
+  ],
+  projects: [
+    { title:"MIRA Autonomous Underwater Vehicle", status:"done", viz:"waves",
+      meta:"Programming Lead · Dreadnought Robotics",
+      text:"Autonomous underwater vehicle built with the Dreadnought Robotics team. Placed second internationally at the TAU Autonomy Centre Competition, Norway, 2024.",
+      tags:["AUV","autonomy","robotics"], github:"", demo:"" },
+    { title:"Wall perception and coverage", status:"ongoing", viz:"points",
+      meta:"mobile manipulator",
+      text:"Wall perception, point-cloud processing and geometric analysis for coverage-oriented mapping on a mobile manipulator. Work in progress.",
+      tags:["ROS 2","RGB-D","point clouds","plane extraction"], github:"", demo:"" },
+    { title:"PPE detection", status:"done", viz:"boxes",
+      meta:"YOLOv8 · ~2,605 annotated images · 100 epochs",
+      text:"Object detection for personal protective equipment, focused on how lighting changes (dim, harsh, uneven) affect detection.",
+      tags:["YOLOv8","computer vision","object detection"], github:"", demo:"" }
+  ]
+};
+/* ================================================ */
+
+const $=(s,r=document)=>r.querySelector(s), esc=s=>s.replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const link=(u,t)=>u?`<a href="${esc(u)}" target="_blank" rel="noopener">${t}</a>`:"";
+const win=(t,b)=>`<div class="title"><span>${t}</span><button class="min" aria-label="Minimize">_</button><button class="x" aria-label="Close">x</button></div><div class="body">${b}</div>`;
+
+const viz={
+ waves:`<svg viewBox="0 0 100 100"><rect width="100" height="100" fill="#dcebf2"/>${[30,44,58,72].map((y,i)=>`<path d="M0 ${y}q12.5-8 25 0t25 0t25 0t25 0" fill="none" stroke="#73A9CB" stroke-width="1.2" opacity="${1-i*.2}"/>`).join("")}<rect x="34" y="40" width="32" height="12" fill="#FAFBFA" stroke="#263C4B" stroke-width="1"/><circle cx="62" cy="46" r="2" fill="#263C4B"/></svg>`,
+ points:`<svg viewBox="0 0 100 100"><rect width="100" height="100" fill="#eef5f1"/>${Array.from({length:150},(_,i)=>{const x=(i*37%97)+2,y=((i*53)%89)+5,w=Math.abs(x-50)<18;return`<rect x="${x}" y="${y}" width="1.6" height="1.6" fill="${w?'#263C4B':'#73A9CB'}" opacity="${w?.8:.55}"/>`}).join("")}<path d="M32 20L68 28V84L32 76Z" fill="none" stroke="#263C4B" stroke-dasharray="2 2" stroke-width=".8"/></svg>`,
+ boxes:`<svg viewBox="0 0 100 100"><rect width="100" height="100" fill="#ebe8f6"/><rect x="14" y="16" width="34" height="46" fill="none" stroke="#263C4B" stroke-width="1"/><text x="15" y="13" font-size="6" fill="#263C4B" font-family="monospace">helmet</text><rect x="56" y="30" width="30" height="50" fill="none" stroke="#73A9CB" stroke-width="1"/><text x="57" y="27" font-size="6" fill="#5d7585" font-family="monospace">vest</text></svg>`
+};
+
+$("#intro").textContent=SITE.intro;
+$("#links").innerHTML=[link(SITE.github,"github"),link(SITE.linkedin,"linkedin"),link(SITE.resume,"resume")].filter(Boolean).join(" / ");
+$("#status").innerHTML=SITE.status.map(([k,v])=>`<dt>${k}</dt><dd>${k=="currently"?'<span class="dot"></span>':""}${esc(v)}</dd>`).join("");
+$("#inhead").textContent=SITE.inHead;
+$("#note").textContent=SITE.note;
+
+$("#proj").innerHTML=win("/projects",SITE.projects.map(p=>`<article class="p"><div class="thumb" role="img" aria-label="${esc(p.title)} placeholder illustration">${viz[p.viz]}</div><div>
+ <h3>${esc(p.title)}</h3><p class="meta"><span class="state ${p.status=="ongoing"?"on":""}">${p.status=="ongoing"?"ongoing":"completed"}</span> ${esc(p.meta)}</p>
+ <p>${esc(p.text)}</p><div>${p.tags.map(t=>`<span class="tag">${esc(t)}</span>`).join("")}</div>
+ <p class="meta" style="margin-top:6px">${[link(p.github,"code"),link(p.demo,"demo")].filter(Boolean).join(" / ")}</p></div></article>`).join(""));
+$("#about").innerHTML=win("/about_me.txt",SITE.about.map(t=>`<p>${esc(t)}</p>`).join("")+`<ul class="tl">${SITE.timeline.map(([d,t])=>`<li><small>${esc(d)}</small>${esc(t)}</li>`).join("")}</ul>`);
+$("#now").innerHTML=win("/now_learning.exe",`<p class="meta">research log, updated when I remember</p><ul class="tick">${SITE.now.map(t=>`<li>${esc(t)}</li>`).join("")}</ul>`);
+$("#contact").innerHTML=win("/mail",`<p>${SITE.email?`<a href="mailto:${esc(SITE.email)}">${esc(SITE.email)}</a>`:"email: (add yours in SITE.email)"}</p><p>${[link(SITE.github,"github"),link(SITE.linkedin,"linkedin"),link(SITE.resume,"resume")].filter(Boolean).join(" / ")}</p><p class="meta">Ann Arbor, Michigan</p>`);
+
+let z=10;
+const front=w=>{w.style.zIndex=++z};
+const dock=$("#dock");
+function open(id){
+  const w=document.getElementById(id); if(!w) return;
+  w.hidden=false; w.classList.remove("min"); w.classList.remove("open"); void w.offsetWidth; w.classList.add("open"); front(w);
+  if(!dock.querySelector(`[data-d="${id}"]`)){const b=document.createElement("button");b.dataset.d=id;b.textContent=w.getAttribute("aria-label").toLowerCase();b.onclick=()=>open(id);dock.append(b)}
+  $(".x",w)?.focus({preventScroll:true});
+}
+function close(w){w.hidden=true;dock.querySelector(`[data-d="${w.id}"]`)?.remove()}
+document.addEventListener("click",e=>{
+  const o=e.target.closest("[data-open]"); if(o) return open(o.dataset.open);
+  const w=e.target.closest(".win"); if(!w) return;
+  if(e.target.closest(".x")) close(w);
+  else if(e.target.closest(".min")) w.classList.toggle("min");
+});
+document.addEventListener("keydown",e=>{
+  if(e.key!=="Escape") return;
+  const ws=[...document.querySelectorAll(".pop:not([hidden])")].sort((a,b)=>b.style.zIndex-a.style.zIndex); if(ws[0]) close(ws[0]);
+});
+/* drag by title bar (desktop only) */
+document.querySelectorAll(".win").forEach(w=>{
+  w.addEventListener("pointerdown",()=>front(w));
+  $(".title",w).addEventListener("pointerdown",e=>{
+    if(e.target.closest("button")||innerWidth<=760) return;
+    const dx=e.clientX-w.offsetLeft, dy=e.clientY-w.offsetTop, t=e.currentTarget; t.setPointerCapture(e.pointerId);
+    const mv=m=>{w.style.left=Math.max(0,m.clientX-dx)+"px";w.style.top=Math.max(0,m.clientY-dy)+"px";w.style.right="auto"};
+    t.addEventListener("pointermove",mv); t.addEventListener("pointerup",()=>t.removeEventListener("pointermove",mv),{once:true});
+  });
+});
+const tick=()=>{$("#clock").textContent=new Date().toLocaleString("en-US",{weekday:"short",hour:"numeric",minute:"2-digit"}).toLowerCase()};
+tick(); setInterval(tick,20000);
+if(location.hash){const id=location.hash.slice(1); if(["proj","about","now","contact"].includes(id)) open(id)}
+</script>
+</body>
+</html>
