@@ -1,10 +1,9 @@
-from pathlib import Path
-
 html = r'''<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500&display=swap" rel="stylesheet">
   <meta name="description" content="Aaliya Alam — robotics, perception, and autonomous systems.">
   <title>Aaliya Alam</title>
   <style>
@@ -22,7 +21,11 @@ html = r'''<!DOCTYPE html>
       padding: 34px 22px 50px;
       color: var(--text);
       background: #fff;
-      font: 16px/1.48 Georgia, "Times New Roman", serif;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 14px;
+      font-weight: 300;
+      line-height: 1.8;
+      letter-spacing: -0.3px;
     }
     a { color: var(--link); text-decoration: none; }
     a:hover { text-decoration: underline; }
