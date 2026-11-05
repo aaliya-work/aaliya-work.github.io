@@ -11,7 +11,7 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' fill='%2373A9CB'/%3E%3Crect x='3' y='3' width='10' height='7' fill='%23EDF5F8'/%3E%3Crect x='5' y='5' width='2' height='2' fill='%23263C4B'/%3E%3Crect x='9' y='5' width='2' height='2' fill='%23263C4B'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Caveat:wght@500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600;700&family=Pixelify+Sans:wght@500;700&display=swap" rel="stylesheet">
 <style>
 :root{
   --bg:#EDF5F8; --ink:#263C4B; --soft:#5d7585; --sky:#73A9CB; --mint:#C8E6DC; --lav:#DCD8EF; --paper:#FAFBFA;
@@ -109,6 +109,39 @@ h1{font-weight:500;font-size:24px;line-height:1.25;letter-spacing:-.02em;margin-
   .player{display:none}
 }
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+/* ---- v4: vintage desktop, pixel ---- */
+:root{--soft:#46606f;--hi:#fff;--lo:#9db5c3}
+body{font-weight:500;background:var(--bg) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24'%3E%3Crect x='11' y='11' width='2' height='2' fill='%2373A9CB' opacity='.4'/%3E%3C/svg%3E")}
+.bar,.bottom{background:#dfe9ee;backdrop-filter:none;color:var(--ink);font-weight:600}
+.bar{border-bottom:2px solid var(--ink)} .bottom{border-top:2px solid var(--ink);box-shadow:inset 0 2px 0 var(--hi)}
+.bar button,.bottom a{color:var(--ink);font-weight:600}
+.win{border:2px solid var(--ink);box-shadow:inset 2px 2px 0 var(--hi),inset -2px -2px 0 var(--lo),5px 5px 0 var(--ink)}
+.title{background:#cfe3ee url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4'%3E%3Crect width='2' height='2' fill='%23fff' opacity='.75'/%3E%3Crect x='2' y='2' width='2' height='2' fill='%23fff' opacity='.75'/%3E%3C/svg%3E");color:var(--ink);font-weight:600;border-bottom:2px solid var(--ink)}
+.title span{flex:0 1 auto;background:#cfe3ee;padding:0 8px}
+.title .min{margin-left:auto}
+.title button,.btn,.dock button,.ctrl span{border:2px solid var(--ink);background:var(--paper);box-shadow:inset 2px 2px 0 var(--hi),inset -2px -2px 0 var(--lo)}
+.title button{width:22px;height:22px;font-weight:700}
+.btn{background:var(--mint);font-weight:600;box-shadow:inset 2px 2px 0 var(--hi),inset -2px -2px 0 var(--lo),3px 3px 0 var(--ink)}
+.btn.alt{background:var(--paper)}
+.btn:active,.title button:active{box-shadow:inset 2px 2px 0 var(--lo),inset -2px -2px 0 var(--hi);transform:translate(1px,1px)}
+h1,h3,.note{font-family:"Pixelify Sans",var(--mono)}
+h1,h3{font-weight:700;letter-spacing:0}
+.tag,.state,.thumb,.player .screen{border:2px solid var(--ink)} .tag{font-weight:600}
+.thumb svg{image-rendering:pixelated}
+.note{font:500 17px/1.25 "Pixelify Sans",var(--mono);border:2px solid var(--ink);box-shadow:4px 4px 0 var(--ink);transform:rotate(-2deg)}
+.icon{font-weight:600;border:2px solid transparent}
+.icon:hover,.icon:focus-visible{background:var(--mint);border:2px dotted var(--ink)}
+.icon span[data-ic]{margin:0 auto 4px}
+.cloud{position:absolute;opacity:.95;animation:drift 26s ease-in-out infinite alternate}
+.c1{top:44px;left:7%} .c2{top:150px;right:34%;animation-duration:34s}
+@keyframes drift{to{transform:translateX(40px)}}
+.cam{position:absolute;left:150px;bottom:70px;transform:rotate(-5deg);filter:drop-shadow(3px 3px 0 var(--ink))}
+.cat{position:absolute;right:26px;bottom:100%;margin-bottom:-2px;background:none;border:0;padding:0;z-index:1;line-height:0}
+.cat:focus-visible{outline-offset:0}
+.bub{position:absolute;right:62px;top:-4px;line-height:1.3;white-space:nowrap;background:var(--paper);border:2px solid var(--ink);padding:0 8px;font:500 13px "Pixelify Sans",var(--mono)}
+.bub[hidden]{display:none}
+@media(max-width:760px){.cloud,.cam{display:none}.cat{position:static;display:block;margin:0 14px -2px auto}.bub{top:auto;bottom:6px}}
 </style>
 </head>
 <body>
@@ -117,14 +150,18 @@ h1{font-weight:500;font-size:24px;line-height:1.25;letter-spacing:-.02em;margin-
   <span class="clock" id="clock"></span></div>
 
 <main class="desk" id="desk">
+  <svg class="cloud c1" width="168" height="56" viewBox="0 0 21 7" shape-rendering="crispEdges" aria-hidden="true"><path d="M0 4h3V3h3V1h6v2h3v1h3v3H0z" fill="#fff" stroke="#263C4B" stroke-opacity=".3" stroke-width=".3"/></svg>
+  <svg class="cloud c2" width="112" height="40" viewBox="0 0 21 7" shape-rendering="crispEdges" aria-hidden="true"><path d="M0 4h3V3h3V1h6v2h3v1h3v3H0z" fill="#fff" stroke="#263C4B" stroke-opacity=".3" stroke-width=".3"/></svg>
   <nav class="icons" aria-label="Desktop">
-    <button class="icon" data-open="proj"><svg width="36" height="30" viewBox="0 0 12 10"><path d="M0 1h5l1 1h6v8H0z" fill="#73A9CB"/><path d="M0 3h12v7H0z" fill="#9cc6de"/><path d="M0 3h12" stroke="#fff" stroke-width=".4"/></svg><span>projects</span></button>
-    <button class="icon" data-open="about"><svg width="30" height="34" viewBox="0 0 10 12"><path d="M0 0h7l3 3v9H0z" fill="#FAFBFA" stroke="#263C4B" stroke-width=".6"/><path d="M2 5h6M2 7h6M2 9h4" stroke="#73A9CB" stroke-width=".6"/></svg><span>about_me.txt</span></button>
-    <button class="icon" data-open="now"><svg width="34" height="30" viewBox="0 0 12 10"><rect width="12" height="10" fill="#DCD8EF" stroke="#263C4B" stroke-width=".6"/><rect width="12" height="2" fill="#73A9CB"/><path d="M3 5l2 1.5L3 8" stroke="#263C4B" stroke-width=".6" fill="none"/></svg><span>now_learning.exe</span></button>
-    <button class="icon" data-open="contact"><svg width="34" height="26" viewBox="0 0 12 9"><rect width="12" height="9" fill="#FAFBFA" stroke="#263C4B" stroke-width=".6"/><path d="M0 0l6 5 6-5" stroke="#73A9CB" stroke-width=".6" fill="none"/></svg><span>mail</span></button>
+    <button class="icon" data-open="proj"><span data-ic="folder" data-sz="4"></span><span>projects</span></button>
+    <button class="icon" data-open="about"><span data-ic="doc" data-sz="4"></span><span>about_me.txt</span></button>
+    <button class="icon" data-open="now"><span data-ic="hour" data-sz="4"></span><span>now_learning.exe</span></button>
+    <button class="icon" data-open="contact"><span data-ic="mail" data-sz="4"></span><span>mail</span></button>
   </nav>
+  <span class="cam" data-ic="cam" data-sz="4" aria-hidden="true"></span>
 
   <section class="win main" aria-labelledby="hi">
+    <button class="cat" id="cat" aria-label="Pet the cat"><i class="bub" id="bub" hidden></i><span class="catpx"></span></button>
     <div class="title"><span>/hello.txt</span><button class="min" aria-label="Minimize">_</button></div>
     <div class="body">
       <h1 id="hi">Building things that see, move &amp; think.</h1>
@@ -204,10 +241,11 @@ const $=(s,r=document)=>r.querySelector(s), esc=s=>s.replace(/[&<>"]/g,c=>({"&":
 const link=(u,t)=>u?`<a href="${esc(u)}" target="_blank" rel="noopener">${t}</a>`:"";
 const win=(t,b)=>`<div class="title"><span>${t}</span><button class="min" aria-label="Minimize">_</button><button class="x" aria-label="Close">x</button></div><div class="body">${b}</div>`;
 
+const px=(w,b,bg)=>`<svg viewBox="0 0 ${w} ${w}" shape-rendering="crispEdges"><rect width="${w}" height="${w}" fill="${bg}"/>${b}</svg>`;
 const viz={
- waves:`<svg viewBox="0 0 100 100"><rect width="100" height="100" fill="#dcebf2"/>${[30,44,58,72].map((y,i)=>`<path d="M0 ${y}q12.5-8 25 0t25 0t25 0t25 0" fill="none" stroke="#73A9CB" stroke-width="1.2" opacity="${1-i*.2}"/>`).join("")}<rect x="34" y="40" width="32" height="12" fill="#FAFBFA" stroke="#263C4B" stroke-width="1"/><circle cx="62" cy="46" r="2" fill="#263C4B"/></svg>`,
- points:`<svg viewBox="0 0 100 100"><rect width="100" height="100" fill="#eef5f1"/>${Array.from({length:150},(_,i)=>{const x=(i*37%97)+2,y=((i*53)%89)+5,w=Math.abs(x-50)<18;return`<rect x="${x}" y="${y}" width="1.6" height="1.6" fill="${w?'#263C4B':'#73A9CB'}" opacity="${w?.8:.55}"/>`}).join("")}<path d="M32 20L68 28V84L32 76Z" fill="none" stroke="#263C4B" stroke-dasharray="2 2" stroke-width=".8"/></svg>`,
- boxes:`<svg viewBox="0 0 100 100"><rect width="100" height="100" fill="#ebe8f6"/><rect x="14" y="16" width="34" height="46" fill="none" stroke="#263C4B" stroke-width="1"/><text x="15" y="13" font-size="6" fill="#263C4B" font-family="monospace">helmet</text><rect x="56" y="30" width="30" height="50" fill="none" stroke="#73A9CB" stroke-width="1"/><text x="57" y="27" font-size="6" fill="#5d7585" font-family="monospace">vest</text></svg>`
+ waves:px(16,[4,7,10,13].map((y,k)=>[...Array(16)].map((_,x)=>`<rect x="${x}" y="${y+((x+k*2)%4<2?0:1)}" width="1" height="1" fill="#73A9CB"/>`).join("")).join("")+'<rect x="4" y="4" width="8" height="3" fill="#FAFBFA" stroke="#263C4B" stroke-width=".5"/><rect x="9" y="5" width="1" height="1" fill="#263C4B"/><rect x="12" y="5" width="2" height="1" fill="#263C4B"/>',"#dcebf2"),
+ points:px(12,[...Array(144)].map((_,i)=>{const x=i%12,y=(i/12)|0,h=(i*37+y*11)%7;return(h<2||x==6)?`<rect x="${x}" y="${y}" width="1" height="1" fill="${x==6?"#263C4B":"#73A9CB"}" opacity="${x==6?1:.3+h*.15}"/>`:""}).join(""),"#eef5f1"),
+ boxes:px(16,'<rect x="2" y="3" width="6" height="9" fill="none" stroke="#263C4B" stroke-width=".7"/><rect x="2" y="1.4" width="6" height="1.6" fill="#263C4B"/><rect x="10" y="5" width="4" height="8" fill="none" stroke="#73A9CB" stroke-width=".7"/><rect x="10" y="3.4" width="4" height="1.6" fill="#73A9CB"/>',"#ebe8f6")
 };
 
 $("#intro").textContent=SITE.intro;
@@ -224,7 +262,7 @@ $("#about").innerHTML=win("/about_me.txt",SITE.about.map(t=>`<p>${esc(t)}</p>`).
 $("#now").innerHTML=win("/now_learning.exe",`<p class="meta">research log, updated when I remember</p><ul class="tick">${SITE.now.map(t=>`<li>${esc(t)}</li>`).join("")}</ul>`);
 $("#contact").innerHTML=win("/mail",`<p>${SITE.email?`<a href="mailto:${esc(SITE.email)}">${esc(SITE.email)}</a>`:"email: (add yours in SITE.email)"}</p><p>${[link(SITE.github,"github"),link(SITE.linkedin,"linkedin"),link(SITE.resume,"resume")].filter(Boolean).join(" / ")}</p><p class="meta">Ann Arbor, Michigan</p>`);
 
-let z=10;
+let z=100;
 const front=w=>{w.style.zIndex=++z};
 const dock=$("#dock");
 function open(id){
@@ -257,6 +295,28 @@ document.querySelectorAll(".win").forEach(w=>{
 const tick=()=>{$("#clock").textContent=new Date().toLocaleString("en-US",{weekday:"short",hour:"numeric",minute:"2-digit"}).toLowerCase()};
 tick(); setInterval(tick,20000);
 if(location.hash){const id=location.hash.slice(1); if(["proj","about","now","contact"].includes(id)) open(id)}
+
+/* ---- pixel art ---- */
+const PAL={k:"#263C4B",w:"#FAFBFA",s:"#73A9CB",l:"#b9d6e6",m:"#C8E6DC",v:"#DCD8EF",g:"#c3cfd6",d:"#6f8696"};
+const ART={
+ folder:["............",".kkkkk......","kssssskkkkk.","kllllllllllk","kllllllllllk","kssssssssssk","kssssssssssk","kssssssssssk","kssssssssssk","kssssssssssk","kkkkkkkkkkkk","............"],
+ doc:["..kkkkkkk...","..kwwwwwkk..","..kwwwwwkwk.","..kwwwwwkkkk","..kwsssswwwk","..kwwwwwwwwk","..kwssssssw k".replace(" ",""),"..kwwwwwwwwk","..kwsssswwwk","..kwwwwwwwwk","..kkkkkkkkkk","............"],
+ hour:[".kkkkkkkkkk.","..kssssssk..","...kssssk...","....kssk....",".....kk.....",".....kk.....","....kmmk....","...kmmmmk...","..kmmmmmmk..",".kmmmmmmmmk.",".kkkkkkkkkk.","............"],
+ mail:["............","............","kkkkkkkkkkkk","kkwwwwwwwwkk","kwkwwwwwwkwk","kwwkwwwwkwwk","kwwwkkkkwwwk","kllllllllllk","kllllllllllk","kkkkkkkkkkkk","............","............"],
+ cat:[".kk........kk.",".kgk......kgk.",".kggkkkkkkggk.",".kgggggggggggk",".kgkkgggggkkgk",".kgkkgggggkkgk",".kgggggkkggggk",".kgggggggggggk",".kgggggggggggk",".kkkkkkkkkkkkk"],
+ cam:["...kkk........","kkkkkkkkkkkkkk","kggggkkkkkkggk","kgggkddddddkgk","kgggkdssssdkgk","kgggkdssssdkgk","kgggkddddddkgk","kggggkkkkkkggk","kkkkkkkkkkkkkk"]
+};
+function pix(rows,z){let r="";rows.forEach((row,y)=>[...row].forEach((c,x)=>{if(PAL[c])r+=`<rect x="${x}" y="${y}" width="1" height="1" fill="${PAL[c]}"/>`}));
+ return `<svg width="${rows[0].length*z}" height="${rows.length*z}" viewBox="0 0 ${rows[0].length} ${rows.length}" shape-rendering="crispEdges" aria-hidden="true">${r}</svg>`}
+document.querySelectorAll("[data-ic]").forEach(e=>{e.innerHTML=pix(ART[e.dataset.ic],+e.dataset.sz||4)});
+
+/* ---- the cat ---- */
+(function(){
+ const cat=$("#cat"),px2=$(".catpx",cat),bub=$("#bub"),say=["mrrp","meow","feed me","*loaf*","404: treat not found","purr.exe running","1 unread meow"];
+ const draw=c=>{const r=ART.cat.slice(); if(c) r[4]=r[3]; px2.innerHTML=pix(r,4)}; draw(false);
+ if(!matchMedia("(prefers-reduced-motion:reduce)").matches) setInterval(()=>{draw(true);setTimeout(()=>draw(false),160)},3800);
+ let n=0,t; cat.onclick=()=>{bub.textContent=say[n++%say.length];bub.hidden=false;clearTimeout(t);t=setTimeout(()=>{bub.hidden=true},1800)};
+})();
 </script>
 </body>
 </html>
