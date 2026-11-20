@@ -46,9 +46,19 @@
     .photo img { width: 100%; max-width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 50%; display: block; }
 
     .pub td { padding: 20px; }
-    .pub .img { width: 25%; vertical-align: middle; }
-    .pub .img img { width: 160px; max-width: 100%; height: auto; display: block; }
-    .pub .txt { width: 75%; vertical-align: middle; }
+    .pub .img { width: 30%; vertical-align: middle; }
+    .pub .img img { width: 100%; max-width: 250px; height: auto; display: block; margin: 0 auto; border-radius: 3px; background: #fff; }
+    .pub .img a:hover img { opacity: .85; }
+    .pub .txt { width: 70%; vertical-align: middle; }
+    .xps { margin: 0 0 8px; }
+    .xp { padding: 12px 20px; }
+    .xp:nth-child(odd) { background: #eef1f9; }
+    .xp p { margin: 2px 0; }
+    .xp-head { font-size: 15px; }
+    .xp .stack { font-style: italic; color: #666; font-size: 13px; margin-bottom: 4px; }
+    .xp b { font-weight: 700; }
+    html.dark .xp:nth-child(odd) { background: #1f232a; }
+    html.dark .xp .stack { color: #9aa1aa; }
     .pub.hl { background: #ffffd0; }
     .papertitle { font-size: 15px; font-weight: 700; }
     ul.pts { margin: 0; padding-left: 18px; }
@@ -66,6 +76,7 @@
       .photo img { width: 60%; margin: 0 auto; }
       .pub .img, .pub .txt { display: block; width: auto; }
       .pub .img { padding-bottom: 0; }
+      .pub .img img { max-width: 100%; }
       .misc .label, .misc .val { display: block; width: auto; text-align: left; }
       .misc .label { padding-bottom: 0; }
     }
@@ -114,7 +125,7 @@
           Before that I worked on underwater visual odometry and velocity estimation, medical image harmonization, and
           safety-monitoring vision systems, and led software for an autonomous underwater vehicle team. I studied
           Computer Science and Engineering (Artificial Intelligence and Robotics) at
-          <a href="https://vit.ac.in/">Vellore Institute of Technology</a>.
+          Vellore Institute of Technology.
         </p>
         <p class="links">
           <a href="mailto:aaaliya@umich.edu">Email</a> &nbsp;/&nbsp;
@@ -167,17 +178,7 @@
           <span class="venue">Centre for Healthcare Advancement, Innovation and Research, VIT Chennai</span>, 2025<br>
           Journal manuscript submitted to Elsevier
           <p></p>
-          <p>An end-to-end CycleGAN harmonization system with a custom preservation loss that explicitly conserves microaneurysms, haemorrhages, hard exudates, and optic disc structure across cohorts. Achieved 0.93 SSIM, 33 dB PSNR, and L1 loss of 0.0165–0.0186, validated on Indian retinal data from the <a href="https://mdrf.in/">Madras Diabetes Research Foundation</a> and <a href="https://www.visionresearchfoundation.org/">Vision Research Foundation</a>.</p>
-        </td>
-      </tr>
-      <tr class="pub">
-        <td class="img"><img src="images/feature-matching.jpg" alt="" onerror="this.style.visibility='hidden'"></td>
-        <td class="txt">
-          <span class="papertitle">Real-Time Object Tracking with ORB-FLANN and RANSAC Homography</span><br>
-          <span class="venue">Project</span><br>
-          <a href="https://github.com/scaa1810/Feature-Matching">code</a>
-          <p></p>
-          <p>A feature-tracking system with tuned LSH parameters and custom RANSAC homography estimation, running at 32.5 FPS. Reached a 46.15% inlier ratio (the Oxford benchmark averages 40.92%) and 5.6 px average reprojection error, tracking reliably across lighting and viewpoint changes.</p>
+          <p>An end-to-end CycleGAN harmonization system with a custom preservation loss that explicitly conserves microaneurysms, haemorrhages, hard exudates, and optic disc structure across cohorts. Achieved 0.93 SSIM, 33 dB PSNR, and L1 loss of 0.0165–0.0186, validated on Indian retinal data from the Madras Diabetes Research Foundation and Vision Research Foundation.</p>
         </td>
       </tr>
       <tr class="pub">
@@ -200,68 +201,51 @@
           <p>Tabular Q-learning for 3D drone navigation in cluttered mazes with shaped rewards (distance-to-goal, forward progress, collision penalties). Heatmaps and trajectory statistics over 970 episodes point to reward sparsity as the key challenge.</p>
         </td>
       </tr>
+      <tr class="pub">
+        <td class="img"><img src="images/armlab.jpg" alt="" onerror="this.style.visibility='hidden'"></td>
+        <td class="txt">
+          <span class="papertitle">Grasping with Autonomous 6 DoF Manipulator</span><br>
+          <span class="venue">Robotics Systems Lab</span>
+          <p></p>
+          <p>Developed novel algorithms for object manipulation (sorting, stacking/unstacking) for a 6 DoF UFACTORY Lite 6 arm. Performed intrinsic &amp; extrinsic camera calibration, classical CV techniques with Intel RealSense L515 for object detection. Implemented forward &amp; inverse kinematics using DH and Newton-Raphson method.</p>
+          <p class="note">Tech Stack: C++, Python, OpenCV, ROS2, Intel RealSense</p>
+        </td>
+      </tr>
     </tbody></table>
   </td></tr>
 
-  <!-- ===== Experience. Thumbnails: put a logo or photo at each images/... path, or leave it out. ===== -->
+  <!-- ===== Experience ===== -->
   <tr><td>
     <table class="row"><tbody><tr><td>
       <h2>Experience</h2>
     </td></tr></tbody></table>
-    <table class="row"><tbody>
-      <tr class="pub">
-        <td class="img"><img src="images/sakar.jpg" alt="" onerror="this.style.visibility='hidden'"></td>
-        <td class="txt">
-          <span class="papertitle">Perception Intern</span><br>
-          Sakar Robotics, Pune<br>
-          <span class="venue">Feb 2026 – Jul 2026</span>
-          <p></p>
-          <ul class="pts"><li>Built 3D spatial perception for robotic mapping: sparse point-cloud wall reconstruction and RGB-D mapping pipelines, with 3D meshing reworked around TSDF integration, giving drift-free, sub-mm reconstruction and robust wall and obstacle extraction.</li><li>Led perception and manipulation R&amp;D for mobile manipulators picking and placing varied foam objects into bins (YOLO detection, FoundationPose with CAD priors, grasping, motion planning in tight spaces). Built spatial tracking for a multi-part foam assembly under changing lighting and backgrounds, and fixed depth, pose-estimation, and pre-grasp planning bottlenecks to cut several seconds from execution time.</li></ul>
-        </td>
-      </tr>
-      <tr class="pub">
-        <td class="img"><img src="images/chair.jpg" alt="" onerror="this.style.visibility='hidden'"></td>
-        <td class="txt">
-          <span class="papertitle">Summer Research Intern</span><br>
-          Centre for Healthcare Advancement, Innovation and Research, VIT Chennai<br>
-          <span class="venue">May 2025 – Aug 2025</span><br>
-          <a href="https://drive.google.com/file/d/1HSfJmtIeRYyOWdOmqsQQm-tJhY3X8bIm/view?usp=sharing">certificate</a>
-          <p></p>
-          <ul class="pts"><li>Retinal image harmonization research with Prof. Suchetha Manikandan (see <a href="#retinal">above</a>).</li></ul>
-        </td>
-      </tr>
-      <tr class="pub">
-        <td class="img"><img src="images/aauv.jpg" alt="" onerror="this.style.visibility='hidden'"></td>
-        <td class="txt">
-          <span class="papertitle">President</span><br>
-          Advances in Autonomous Unmanned Vehicles Club, VIT Chennai<br>
-          <span class="venue">Aug 2024 – Aug 2025</span>
-          <p></p>
-          <ul class="pts"><li>Led a 48-student multidisciplinary team.</li><li>Ran hands-on workshops on ROS, embedded systems, and control theory (PID/LQR), and mentored members on projects including real-time face tracking and image-filtering pipelines.</li><li>Worked with faculty advisors and university administration, managed the budget, and procured technical resources.</li></ul>
-        </td>
-      </tr>
-      <tr class="pub">
-        <td class="img"><img src="images/ppe-detection.jpg" alt="" onerror="this.style.visibility='hidden'"></td>
-        <td class="txt">
-          <span class="papertitle">Data Scientist Intern</span><br>
-          Fifthgen Tech Solutions, Noida<br>
-          <span class="venue">May 2024 – Jul 2024</span><br>
-          <a href="https://drive.google.com/file/d/1H_Kw1dv2YWXjirIDDbluClRlkzZjajlk/view?usp=sharing">certificate</a>
-          <p></p>
-          <ul class="pts"><li>Built a real-time safety monitoring system for construction sites using YOLOv8 detection and Mask R-CNN segmentation to check PPE compliance and identify hazardous zones.</li><li>Optimized the pipeline for real-time use while reaching 92% mAP for PPE compliance detection.</li></ul>
-        </td>
-      </tr>
-      <tr class="pub">
-        <td class="img"><img src="images/mira-auv.jpg" alt="" onerror="this.style.visibility='hidden'"></td>
-        <td class="txt">
-          <span class="papertitle">Programming Lead</span><br>
-          Dreadnought Robotics (AUV team)<br>
-          <span class="venue">Sep 2023 – Feb 2024</span>
-          <p></p>
-          <ul class="pts"><li>Supervised the programming department and worked on ML and DL algorithms to improve AUV performance.</li><li>MIRA AUV: built underwater ArUco marker detection and pose estimation with synchronized dual cameras, reaching sub-centimeter accuracy, deployed as a ROS pipeline on Jetson Xavier for autonomous navigation around underwater obstacles.</li><li>Developed AdaGrad-based PID gain tuning for the AUV, with plotting tools for analysis.</li></ul>
-        </td>
-      </tr>
-    </tbody></table>
+    <div class="xps">
+      <div class="xp">
+        <p class="xp-head"><strong>Perception Intern</strong> — Sakar Robotics, Pune · Feb 2026 – Jul 2026</p>
+        <p class="stack">YOLO, FoundationPose, RGB-D, TSDF, Point Clouds, Grasping, Motion Planning</p>
+        <p>Led perception and manipulation R&amp;D for <b>mobile manipulators</b> doing <b>pick-and-place</b> of varied foam objects into bins, using <b>YOLO</b> detection and <b>FoundationPose</b> with CAD priors for grasping and <b>motion planning in tight spaces</b>. Built <b>3D spatial perception</b>: sparse point-cloud wall reconstruction, RGB-D mapping, and <b>TSDF</b> meshing for <b>drift-free, sub-mm reconstruction</b> and robust wall and obstacle extraction. Built spatial tracking for a multi-part foam assembly under changing lighting, and fixed depth, pose-estimation, and pre-grasp planning bottlenecks to cut <b>several seconds</b> from execution time.</p>
+      </div>
+      <div class="xp">
+        <p class="xp-head"><strong>Summer Research Intern</strong> — Centre for Healthcare Advancement, Innovation and Research, VIT Chennai · May 2025 – Aug 2025</p>
+        <p class="stack">CycleGAN, Image Harmonization, Medical Imaging</p>
+        <p><b>Retinal image harmonization</b> research with Prof. Suchetha Manikandan: a <b>CycleGAN</b> system with a custom <b>structure-preservation loss</b>, reaching <b>0.93 SSIM</b> and <b>33 dB PSNR</b> (see <a href="#retinal">above</a>). <a href="https://drive.google.com/file/d/1HSfJmtIeRYyOWdOmqsQQm-tJhY3X8bIm/view?usp=sharing">certificate</a></p>
+      </div>
+      <div class="xp">
+        <p class="xp-head"><strong>President</strong> — Advances in Autonomous Unmanned Vehicles Club, VIT Chennai · Aug 2024 – Aug 2025</p>
+        <p class="stack">ROS, Embedded Systems, PID/LQR Control</p>
+        <p>Led a <b>48-student</b> multidisciplinary team. Ran hands-on workshops on <b>ROS</b>, embedded systems, and control theory (<b>PID/LQR</b>), and mentored members on projects including real-time face tracking and image-filtering pipelines. Worked with faculty advisors and university administration, managed the budget, and procured technical resources.</p>
+      </div>
+      <div class="xp">
+        <p class="xp-head"><strong>Data Scientist Intern</strong> — Fifthgen Tech Solutions, Noida · May 2024 – Jul 2024</p>
+        <p class="stack">YOLOv8, Mask R-CNN, Object Detection, Instance Segmentation</p>
+        <p>Built a <b>real-time safety monitoring</b> system for construction sites using <b>YOLOv8</b> detection and <b>Mask R-CNN</b> segmentation to check <b>PPE compliance</b> and identify hazardous zones, reaching <b>92% mAP</b>. <a href="https://drive.google.com/file/d/1H_Kw1dv2YWXjirIDDbluClRlkzZjajlk/view?usp=sharing">certificate</a></p>
+      </div>
+      <div class="xp">
+        <p class="xp-head"><strong>Programming Lead</strong> — Dreadnought Robotics (AUV team), VIT Chennai · Sep 2023 – Feb 2024</p>
+        <p class="stack">ROS, OpenCV, ArUco, Jetson Xavier, PID Control</p>
+        <p>Supervised the programming department for the <b>MIRA autonomous underwater vehicle</b>. Built synchronized <b>dual-camera ArUco</b> detection and pose estimation with <b>sub-centimeter accuracy</b>, deployed as a <b>ROS</b> pipeline on <b>Jetson Xavier</b> for autonomous navigation around underwater obstacles, and developed <b>AdaGrad-based PID</b> gain tuning. <a href="#">performance</a></p>
+      </div>
+    </div>
   </td></tr>
 
   <!-- ===== Miscellanea ===== -->
